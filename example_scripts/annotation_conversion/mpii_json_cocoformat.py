@@ -144,8 +144,9 @@ def convert_MPIIjson_cocoformat(json_path, image_dir, coco_path, phase='train'):
 
 if __name__ == "__main__":
     
-    json_path = './anno_files/mpii_anno.json'
-    image_dir = '/home/jzsherlock/my_lab/storage/pose/public_dataset/MPII/images'
-    coco_path = './anno_files/mpii_cocoformat_train.json'
+    json_path = './mpii_json/mpii_anno.json'
+    # image_dir = '/data/public_dataset/MPII/images'
+    image_dir = '/Users/jzsherlock/datasets/MPII/images'
+    coco_path = './mpii_json/mpii_cocoformat_train.json'
 
     convert_MPIIjson_cocoformat(json_path=json_path, image_dir=image_dir, coco_path=coco_path, phase='train')

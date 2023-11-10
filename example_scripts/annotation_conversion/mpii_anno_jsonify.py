@@ -79,12 +79,13 @@ def jsonify_MPII_anno(mat_path, json_path):
     mpii_dict = MPII_mat2dict(rel)
     with open(json_path, 'w') as fjson:
         json.dump(mpii_dict, fjson, indent=4)
-    print('mat --> json conversion sucess, main keys : ')
+    print('mat --> json conversion success, main keys : ')
     print(mpii_dict.keys())
 
 
 if __name__ == "__main__":
-    mat_path = '/home/jzsherlock/my_lab/storage/pose/public_dataset/MPII/mpii_human_pose_v1_u12_2/mpii_human_pose_v1_u12_1.mat'
+    # mat_path = '/data/public_dataset/MPII/mpii_human_pose_v1_u12_2/mpii_human_pose_v1_u12_1.mat'
+    mat_path = '/Users/jzsherlock/datasets/MPII/mpii_human_pose_v1_u12_1.mat'
     json_path = './mpii_json/mpii_anno.json'
     os.makedirs(osp.dirname(json_path), exist_ok=True)
     jsonify_MPII_anno(mat_path=mat_path, json_path=json_path)
