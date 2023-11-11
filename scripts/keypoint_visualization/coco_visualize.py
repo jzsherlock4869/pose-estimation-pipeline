@@ -3,10 +3,16 @@ import cv2
 import numpy as np
 from pycocotools.coco import COCO
 
-json_path = '../annotation_conversion/mpii_json/mpii_cocoformat_train.json'
-img_dir = '/Users/jzsherlock/datasets/MPII/images'
-coco = COCO(annotation_file=json_path)
+# ======== config ======== #
+# json_path = '../annotation_conversion/mpii_json/mpii_cocoformat_train.json'
+# img_dir = '/Users/jzsherlock/datasets/MPII/images'
+json_path = '../convert_single/mpii_single/mpii_single_cocoformat_train.json'
+img_dir = '/Users/jzsherlock/datasets/MPII/images_single'
+num_vis = 50
 
+# ==== start visualization ==== #
+
+coco = COCO(annotation_file=json_path)
 # get all image index info
 ids = list(sorted(coco.imgs.keys()))
 print("number of images: {}".format(len(ids)))
@@ -18,7 +24,7 @@ colormap =  np.random.randint(0, 255, [len(skeleton), 3], np.uint8)
 coco_classes = dict([(v["id"], v["name"]) for k, v in coco.cats.items()])
 print('class: ', coco_classes)
 
-for imid in ids[1:30]:
+for imid in ids[:num_vis]:
     im_info = coco.loadImgs(imid)[0]
     impath = os.path.join(img_dir, im_info['file_name'])
     HH, WW = im_info['height'], im_info['width']
@@ -48,4 +54,4 @@ for imid in ids[1:30]:
     cv2.namedWindow('demo')
     cv2.imshow('demo', img)
     cv2.waitKey(0)
-
+    # press ESC key to show the next sample
