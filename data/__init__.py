@@ -1,0 +1,3 @@
+# from .simple_folder_dataloader import SimpleFolderDataloader
+# from .infer_singlepose_dataloader import InferSingleDataloader
+from coco_singlepose_dataloader import CocoSinglePoseDataset
